@@ -1,0 +1,19 @@
+# CI
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA', '.']
+
+# Push
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA']
+
+# CD
+- name: 'gcr.io/cloud-builders/kubectl'
+  env:
+  - 'CLOUDSDK_COMPUTE_ZONE=us-central1-a'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=kubeconcph'
+  args: ['set', 'image', 'deployment/kubedemo', 'democontainer=gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA']
+
+images:
+- 'gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA'
+

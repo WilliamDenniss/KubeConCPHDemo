@@ -1,0 +1,17 @@
+.gcptitle {
+   position: absolute;
+   top: 0; left: 0; right: 0; bottom: 0;
+   margin: auto; height: 240px; width: 600px;
+   text-align: center;
+   font-family: 'Poiret One', cursive;
+   font-size: 4em;
+}
+.gcptime {
+   position: absolute;
+   bottom: 100px; left: 0; right: 0;
+   margin: auto; height: 100px; width: 600px;
+   text-align: center;
+   font-family: sans-serif;
+   font-size: 2em;
+}
+
